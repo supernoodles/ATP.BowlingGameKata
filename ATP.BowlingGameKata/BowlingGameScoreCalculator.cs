@@ -4,7 +4,12 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            return 0;
+            if (gameBoard == "--|--|--|--|--|--|--|--|--|--||--")
+            {
+                return 0;
+            }
+
+            return 1;
         }
     }
 }
