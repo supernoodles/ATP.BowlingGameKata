@@ -1,22 +1,15 @@
 ﻿namespace ATP.BowlingGameKata
 {
+    using System.Linq;
+
     public class BowlingGameScoreCalculator
     {
         public int ScoreGame(string gameBoard)
         {
-            if (gameBoard == "4-|--|--|--|--|--|--|--|--|--||--")
-            {
-                return 4;
-            }
 
-            if (gameBoard == "1-|--|--|--|--|--|--|--|--|--||--")
+            if (char.IsDigit(gameBoard.First()))
             {
-                return 1;
-            }
-
-            if (gameBoard == "9-|--|--|--|--|--|--|--|--|--||--")
-            {
-                return 9;
+                return int.Parse(gameBoard.First().ToString());
             }
 
             return 0;
