@@ -9,12 +9,12 @@
                 return 4;
             }
 
-            if (gameBoard == "--|--|--|--|--|--|--|--|--|--||--")
+            if (gameBoard == "1-|--|--|--|--|--|--|--|--|--||--")
             {
-                return 0;
+                return 1;
             }
 
-            return 1;
+            return 0;
         }
     }
 }
