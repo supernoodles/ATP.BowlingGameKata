@@ -30,10 +30,17 @@
         }
 
         [Test]
-        public void Return4_Given1PinOnFirstThrowOnFirstFrame()
+        public void Return4_Given4PinsOnFirstThrowOnFirstFrame()
         {
             var result = _calculator.ScoreGame("4-|--|--|--|--|--|--|--|--|--||--");
             result.Should().Be(4);
+        }
+
+        [Test]
+        public void Return9_Given9PinsOnFirstThrowOnFirstFrame()
+        {
+            var result = _calculator.ScoreGame("9-|--|--|--|--|--|--|--|--|--||--");
+            result.Should().Be(9);
         }
     } 
 }
