@@ -42,6 +42,19 @@
             var result = _calculator.ScoreGame("9-|--|--|--|--|--|--|--|--|--||--");
             result.Should().Be(9);
         }
-    } 
+
+
+        [TestCase("9-|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 9)]
+
+        public int ReturnExpectedScore_Given1HitOnFirstThrowOnFirstFrame(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
+
+
+
+
+    }
 }
 

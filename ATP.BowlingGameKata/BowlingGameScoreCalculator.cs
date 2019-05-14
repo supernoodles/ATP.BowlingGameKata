@@ -6,7 +6,6 @@
     {
         public int ScoreGame(string gameBoard)
         {
-
             if (char.IsDigit(gameBoard.First()))
             {
                 return int.Parse(gameBoard.First().ToString());
