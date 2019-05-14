@@ -22,6 +22,14 @@
             var result = calculator.ScoreGame("1-|--|--|--|--|--|--|--|--|--||--");
             result.Should().Be(1);
         }
-    }
+
+        [Test]
+        public void Return4_Given1PinOnFirstThrowOnFirstFrame()
+        {
+            var calculator = new BowlingGameScoreCalculator();
+            var result = calculator.ScoreGame("4-|--|--|--|--|--|--|--|--|--||--");
+            result.Should().Be(4);
+        }
+    } 
 }
 
