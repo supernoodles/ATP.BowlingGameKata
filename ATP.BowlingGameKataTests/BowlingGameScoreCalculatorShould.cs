@@ -29,6 +29,15 @@
         {
             return _calculator.ScoreGame(gameBoard);
         }
+
+        [TestCase("-9|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 9)]
+        [TestCase("-3|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 3)]
+        [TestCase("-1|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 1)]
+        public int ReturnExpectedScore_Given1HitOnSecondThrowOnFirstFrame(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
     }
 }
 
