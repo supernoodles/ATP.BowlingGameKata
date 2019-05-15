@@ -6,19 +6,9 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            if (gameBoard == "-9|--|--|--|--|--|--|--|--|--||--")
+            if (char.IsDigit(char.Parse(gameBoard.Substring(1, 1))))
             {
-                return 9;
-            }
-
-            if (gameBoard == "-3|--|--|--|--|--|--|--|--|--||--")
-            {
-                return 3;
-            }
-
-            if (gameBoard == "-1|--|--|--|--|--|--|--|--|--||--")
-            {
-                return 1;
+                return int.Parse(gameBoard.Substring(1, 1));
             }
 
             if (char.IsDigit(gameBoard.First()))
