@@ -4,6 +4,11 @@
     {
         public int ScoreGame(string gameBoard)
         {
+            if (char.IsDigit(gameBoard[3]) && char.IsDigit(gameBoard[4]))
+            {
+                return GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
+            }
+
             if (char.IsDigit(gameBoard[4]))
             {
                 return GetScoreForPosition(gameBoard, 4);
