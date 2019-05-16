@@ -4,35 +4,18 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            if (char.IsDigit(gameBoard[3]) && char.IsDigit(gameBoard[4]))
+            var scoreFrame2 = GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
+
+            if (scoreFrame2 > 0)
             {
-                return GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
+                return scoreFrame2;
             }
 
-            if (char.IsDigit(gameBoard[4]))
-            {
-                return GetScoreForPosition(gameBoard, 4);
-            }
+            var scoreFrame1 = GetScoreForPosition(gameBoard, 1) + GetScoreForPosition(gameBoard, 0);
 
-
-            if (char.IsDigit(gameBoard[3]))
+            if (scoreFrame1 > 0)
             {
-                return GetScoreForPosition(gameBoard, 3);
-            }
-
-            if (char.IsDigit(gameBoard[1]) && char.IsDigit(gameBoard[0]))
-            {
-                return GetScoreForPosition(gameBoard, 1) + GetScoreForPosition(gameBoard, 0);
-            }
-
-            if (char.IsDigit(gameBoard[1]))
-            {
-                return GetScoreForPosition(gameBoard,1);
-            }
-
-            if (char.IsDigit(gameBoard[0]))
-            {
-                return GetScoreForPosition(gameBoard,0);
+                return scoreFrame1;
             }
 
             return 0;
@@ -40,7 +23,9 @@
 
         private static int GetScoreForPosition(string gameBoard, int position)
         {
-            return int.Parse(gameBoard[position].ToString());
+            return char.IsDigit(gameBoard[position])
+                ? int.Parse(gameBoard[position].ToString())
+                : 0;
         }
     }
 }
