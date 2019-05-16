@@ -8,7 +8,7 @@
 
             var scoreFrame2 = GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
 
-            var scoreFrame3 = GetScoreForPosition(gameBoard, 6);
+            var scoreFrame3 = GetScoreForPosition(gameBoard, 6) + GetScoreForPosition(gameBoard, 7);
 
             return scoreFrame1 + scoreFrame2 + scoreFrame3;
         }
