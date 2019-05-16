@@ -19,7 +19,6 @@
         private int GetScoreForFrame(string frame)
         {
             var score = 0;
-            var position = 0;
 
             foreach (var @throw in frame)
             {
@@ -28,18 +27,12 @@
                     return 10;
                 }
 
-                score += GetScoreForPosition(frame, position);
-                position += 1;
+                score += char.IsDigit(@throw)
+                    ? int.Parse(@throw.ToString())
+                    : 0;
             }
 
             return score;
-        }
-
-        private static int GetScoreForPosition(string gameBoard, int position)
-        {
-            return char.IsDigit(gameBoard[position])
-                ? int.Parse(gameBoard[position].ToString())
-                : 0;
         }
     }
 }
