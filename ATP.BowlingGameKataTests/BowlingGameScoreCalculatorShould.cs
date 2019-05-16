@@ -31,13 +31,9 @@
         }
 
         [TestCase("--|--|1-|--|--|--|--|--|--|--||--", ExpectedResult = 1)]
-        public int ReturnExpectedScore_GivenThrowsInThirdFrame(string gameBoard)
-        {
-            return _calculator.ScoreGame(gameBoard);
-        }
-
         [TestCase("--|--|-7|--|--|--|--|--|--|--||--", ExpectedResult = 7)]
-        public int ReturnExpectedScore_GivenSecondThrowInThirdFrame(string gameBoard)
+        [TestCase("--|--|17|--|--|--|--|--|--|--||--", ExpectedResult = 8)]
+        public int ReturnExpectedScore_GivenThrowsInThirdFrame(string gameBoard)
         {
             return _calculator.ScoreGame(gameBoard);
         }
