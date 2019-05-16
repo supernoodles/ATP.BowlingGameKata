@@ -44,7 +44,11 @@
             return _calculator.ScoreGame(gameBoard);
         }
 
-
+        [TestCase("-1|1-|22|-5|42|1-|-7|22|13|31||--", ExpectedResult = 37)]
+        public int ReturnExpectedScore_GivenThrowsInAnyOfThe10Frames(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
     }
 }
 
