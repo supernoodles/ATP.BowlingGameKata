@@ -63,6 +63,13 @@
         {
             return _calculator.ScoreGame(gameBoard);
         }
+
+        [TestCase("21|13|--|--|--|--|--|--|--|--||--", ExpectedResult = 7)]
+        public int ReturnExpectedScore_GivenHitsOnBothThrowsInFirstTwoFrames(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
     }
 }
 

@@ -4,21 +4,11 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            var scoreFrame2 = GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
-
-            if (scoreFrame2 > 0)
-            {
-                return scoreFrame2;
-            }
-
             var scoreFrame1 = GetScoreForPosition(gameBoard, 1) + GetScoreForPosition(gameBoard, 0);
 
-            if (scoreFrame1 > 0)
-            {
-                return scoreFrame1;
-            }
+            var scoreFrame2 = GetScoreForPosition(gameBoard, 3) + GetScoreForPosition(gameBoard, 4);
 
-            return 0;
+            return scoreFrame1 + scoreFrame2;
         }
 
         private static int GetScoreForPosition(string gameBoard, int position)
