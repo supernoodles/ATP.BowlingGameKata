@@ -38,6 +38,21 @@
             return _calculator.ScoreGame(gameBoard);
         }
 
+        [TestCase("32|--|--|--|--|--|--|--|--|--||--",ExpectedResult = 5)]
+        [TestCase("22|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 4)]
+        [TestCase("23|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 5)]
+        public int ReturnExpectedScore_Given1HitsOnBothThrowsOnFirstFrame(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
+        [TestCase("--|1-|--|--|--|--|--|--|--|--||--", ExpectedResult = 1)]
+        public int ReturnExpectedScore_Given1HitsOnFirstThrowsOnFirstFrame(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
+
     }
 }
 
