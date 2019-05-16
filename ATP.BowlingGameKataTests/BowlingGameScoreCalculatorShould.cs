@@ -38,6 +38,13 @@
             return _calculator.ScoreGame(gameBoard);
         }
 
+        [TestCase("--|--|17|-5|--|--|--|--|--|--||--", ExpectedResult = 13)]
+        public int ReturnExpectedScore_GivenThrowsInFirstFourFrames(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
+
     }
 }
 

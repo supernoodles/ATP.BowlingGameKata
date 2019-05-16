@@ -7,7 +7,7 @@
             var position = 0;
             var score = 0;
 
-            for (var frame = 1; frame < 4; frame++)
+            for (var frame = 1; frame < 5; frame++)
             {
                 score += GetScoreForPosition(gameBoard, position) + GetScoreForPosition(gameBoard, position +1);
                 position += 3;
