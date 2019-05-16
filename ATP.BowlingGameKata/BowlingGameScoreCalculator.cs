@@ -4,13 +4,32 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            var position = 0;
+            var frames = gameBoard.Split('|');
+
             var score = 0;
 
             for (var frame = 1; frame < 11; frame++)
             {
-                score += GetScoreForPosition(gameBoard, position) + GetScoreForPosition(gameBoard, position +1);
-                position += 3;
+                score += GetScoreForFrame(frames[frame - 1]);
+            }
+
+            return score;
+        }
+
+        private int GetScoreForFrame(string frame)
+        {
+            var score = 0;
+            var position = 0;
+
+            foreach (var @throw in frame)
+            {
+                if (@throw == 'X')
+                {
+                    return 10;
+                }
+
+                score += GetScoreForPosition(frame, position);
+                position += 1;
             }
 
             return score;

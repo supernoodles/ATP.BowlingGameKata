@@ -34,6 +34,14 @@
         {
             return _calculator.ScoreGame(gameBoard);
         }
+
+        [TestCase("X|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 10)]
+        public int ReturnExpectedScore_GivenStrikeOnFirstThrowFirstFrame(string gameBoard)
+        {
+            return _calculator.ScoreGame(gameBoard);
+        }
+
+
     }
 }
 
