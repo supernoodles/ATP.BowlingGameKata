@@ -14,6 +14,7 @@
             _calculator = new BowlingGameScoreCalculator();
         }
 
+        [TestCase("-1|1-|22|-5|42|1-|-7|22|13|31||--", ExpectedResult = 37)]
         [TestCase("--|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 0)]
         [TestCase("21|13|--|--|--|--|--|--|--|--||--", ExpectedResult = 7)]
         [TestCase("-9|--|--|--|--|--|--|--|--|--||--", ExpectedResult = 9)]
@@ -25,26 +26,10 @@
         [TestCase("--|1-|--|--|--|--|--|--|--|--||--", ExpectedResult = 1)]
         [TestCase("--|-3|--|--|--|--|--|--|--|--||--", ExpectedResult = 3)]
         [TestCase("--|13|--|--|--|--|--|--|--|--||--", ExpectedResult = 4)]
-        public int ReturnExpectedScore_GivenThrowsInFirstTwoFrames(string gameBoard)
-        {
-            return _calculator.ScoreGame(gameBoard);
-        }
-
         [TestCase("--|--|1-|--|--|--|--|--|--|--||--", ExpectedResult = 1)]
         [TestCase("--|--|-7|--|--|--|--|--|--|--||--", ExpectedResult = 7)]
         [TestCase("--|--|17|--|--|--|--|--|--|--||--", ExpectedResult = 8)]
-        public int ReturnExpectedScore_GivenThrowsInThirdFrame(string gameBoard)
-        {
-            return _calculator.ScoreGame(gameBoard);
-        }
-
         [TestCase("--|--|17|-5|--|--|--|--|--|--||--", ExpectedResult = 13)]
-        public int ReturnExpectedScore_GivenThrowsInFirstFourFrames(string gameBoard)
-        {
-            return _calculator.ScoreGame(gameBoard);
-        }
-
-        [TestCase("-1|1-|22|-5|42|1-|-7|22|13|31||--", ExpectedResult = 37)]
         public int ReturnExpectedScore_GivenThrowsInAnyOfThe10Frames(string gameBoard)
         {
             return _calculator.ScoreGame(gameBoard);
