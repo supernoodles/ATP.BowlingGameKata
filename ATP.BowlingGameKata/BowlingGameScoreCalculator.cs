@@ -1,22 +1,38 @@
 ﻿namespace ATP.BowlingGameKata
 {
-    using System.Linq;
-
     public class BowlingGameScoreCalculator
     {
         public int ScoreGame(string gameBoard)
         {
-            if (char.IsDigit(char.Parse(gameBoard.Substring(1, 1))))
+            var frames = gameBoard.Split('|');
+
+            var score = 0;
+
+            for (var frame = 1; frame < 11; frame++)
             {
-                return int.Parse(gameBoard.Substring(1, 1));
+                score += GetScoreForFrame(frames[frame - 1]);
             }
 
-            if (char.IsDigit(gameBoard.First()))
+            return score;
+        }
+
+        private int GetScoreForFrame(string frame)
+        {
+            var score = 0;
+
+            foreach (var @throw in frame)
             {
-                return int.Parse(gameBoard.First().ToString());
+                if (@throw == 'X')
+                {
+                    return 10;
+                }
+
+                score += char.IsDigit(@throw)
+                    ? int.Parse(@throw.ToString())
+                    : 0;
             }
 
-            return 0;
+            return score;
         }
     }
 }
