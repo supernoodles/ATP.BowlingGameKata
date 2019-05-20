@@ -1,54 +1,38 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-
-namespace ATP.BowlingGameKata
+﻿namespace ATP.BowlingGameKata
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BowlingGameScoreCalculator
     {
         public int ScoreGame(string gameBoard)
         {
-            var frames = gameBoard.Split('|');
-            var score = 0;
+            var playerThrows = Parse(gameBoard).ToList();
 
-            for (var frame = 1; frame < 11; frame++)
+            return Enumerable.Range(1, 10).Sum(frameNumberToScore => 
+                ScoreFrame(playerThrows.PlayerThrowsForFrame(frameNumberToScore), 
+                    playerThrows.NextTwoPlayerThrowsAfterFrame(frameNumberToScore)));
+        }
+
+        private IEnumerable<PlayerThrow> Parse(string gameBoard) =>
+            gameBoard.Split('|')
+                .SelectMany((frame, i) => frame.Select(hit => new PlayerThrow {Score = hit, FrameNumber = i + 1}));
+
+        private int ScoreFrame(IList<PlayerThrow> hitsInFrame, IList<PlayerThrow> nextTwoHits)
+        {
+            var score = hitsInFrame.Total();
+
+            if (hitsInFrame.Last().IsSpare)
             {
-                score += GetFrameScore(frames,frame);
+                score += nextTwoHits.Take(1).ToList().Total();
+            }
+
+            if (hitsInFrame.First().IsStrike)
+            {
+                score += nextTwoHits.Total();
             }
 
             return score;
-        }
-
-        private int GetFrameScore(string[] frames, int frame)
-            => GetScoreForBowls(GetBowlsContributingToFrameScore(frames, frame));
-        
-        private char[] GetBowlsContributingToFrameScore(string[] frames, int frame)
-        {
-            var bowl1 = (frames[frame - 1])[0];
-            var bowl2 = bowl1 == 'X' ? (frames[frame])[0] : (frames[frame - 1])[1];
-            var bowl3 = bowl2 == 'X' ? (frames[frame + 1])[0]
-                : bowl2 == '/' ? (frames[frame])[0]
-                : '-';
-            return new char[]{bowl1, bowl2,bowl3};
-        }
-
-        private int GetScoreForBowls(char[] bowls)
-        {
-            var total = 0;
-            var score = 0;
-            var last = 0;
-
-            foreach (var bowl in bowls)
-            {
-                score = bowl == '-' ? 0
-                        : bowl == 'X' ? 10
-                        : bowl == '/' ? 10 - last
-                        : int.Parse(bowl.ToString());
-
-                total += score;
-                last = score;
-            }
-            return total;
         }
     }
 }

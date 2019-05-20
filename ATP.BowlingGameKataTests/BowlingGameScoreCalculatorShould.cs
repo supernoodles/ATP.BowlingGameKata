@@ -42,6 +42,9 @@
         }
 
         [TestCase("X|1-|--|--|--|--|--|--|--|--||--", ExpectedResult = 12)]
+        [TestCase("X|1/|--|--|--|--|--|--|--|--||--", ExpectedResult = 30)]
+        [TestCase("X|1/|5-|--|--|--|--|--|--|--||--", ExpectedResult = 40)]
+        [TestCase("X|X|X|--|--|--|--|--|--|--||--", ExpectedResult = 60)]
         public int ReturnExpectedScore_GivenStrikeOnFirstThrowFirstFrame1OnFirstThrowSecondFrame(string gameBoard)
         {
             return _calculator.ScoreGame(gameBoard);
