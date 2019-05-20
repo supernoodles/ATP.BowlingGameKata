@@ -16,20 +16,20 @@
 
         private IEnumerable<PlayerThrow> Parse(string gameBoard) =>
             gameBoard.Split('|')
-                .SelectMany((frame, i) => frame.Select(hit => new PlayerThrow {Score = hit, FrameNumber = i + 1}));
+                .SelectMany((frame, frameIndex) => frame.Select(hit => new PlayerThrow {Score = hit, FrameNumber = frameIndex + 1}));
 
-        private int ScoreFrame(IList<PlayerThrow> hitsInFrame, IList<PlayerThrow> nextTwoHits)
+        private int ScoreFrame(IList<PlayerThrow> playerThrowsInFrame, IList<PlayerThrow> nextTwoPlayerThrows)
         {
-            var score = hitsInFrame.Total();
+            var score = playerThrowsInFrame.Total();
 
-            if (hitsInFrame.Last().IsSpare)
+            if (playerThrowsInFrame.Last().IsSpare)
             {
-                score += nextTwoHits.Take(1).ToList().Total();
+                score += nextTwoPlayerThrows.Take(1).ToList().Total();
             }
 
-            if (hitsInFrame.First().IsStrike)
+            if (playerThrowsInFrame.First().IsStrike)
             {
-                score += nextTwoHits.Total();
+                score += nextTwoPlayerThrows.Total();
             }
 
             return score;
