@@ -5,7 +5,10 @@
 
     internal static class PlayerThrowListExtensions
     {
-        public static int Total(this IList<PlayerThrow> throws) => throws.Last().IsSpare ? 10 : throws.Sum(hit => hit.ParseScore);
+        public static int Total(this IList<PlayerThrow> playerThrows) =>
+            playerThrows.Last().IsSpare
+                ? 10
+                : playerThrows.Sum(playerThrow => playerThrow.ParseScore);
 
         public static List<PlayerThrow> PlayerThrowsForFrame(this IEnumerable<PlayerThrow> playerThrows, int frameNumber) =>
             playerThrows.Where(playerThrow => playerThrow.FrameNumber == frameNumber)
