@@ -7,11 +7,11 @@
     {
         public int ScoreGame(string gameBoard)
         {
-            var playerThrows = Parse(gameBoard).ToList();
+            var playerThrowsForGame = Parse(gameBoard).ToList();
 
             return Enumerable.Range(1, 10).Sum(frameNumberToScore => 
-                ScoreFrame(playerThrows.PlayerThrowsForFrame(frameNumberToScore), 
-                    playerThrows.NextTwoPlayerThrowsAfterFrame(frameNumberToScore)));
+                ScoreFrame(playerThrowsForGame.PlayerThrowsForFrame(frameNumberToScore), 
+                    playerThrowsForGame.NextTwoPlayerThrowsAfterFrame(frameNumberToScore)));
         }
 
         private IEnumerable<PlayerThrow> Parse(string gameBoard) =>
