@@ -46,6 +46,10 @@
         [TestCase("X|1/|5-|--|--|--|--|--|--|--||--", ExpectedResult = 40)]
         [TestCase("X|X|X|--|--|--|--|--|--|--||--", ExpectedResult = 60)]
         [TestCase("X|X|X|--|1-|--|9/|7/|--|--||--", ExpectedResult = 88)]
+        [TestCase("--|--|--|--|--|--|--|--|--|X||1/", ExpectedResult = 20)]
+        [TestCase("--|--|--|--|--|--|--|--|--|1/||1-", ExpectedResult = 11)]
+        [TestCase("--|--|--|--|--|--|--|--|--|X||XX", ExpectedResult = 30)]
+        [TestCase("--|--|--|--|--|--|--|--|--|2/||X-", ExpectedResult = 20)]
         public int ReturnExpectedScore_GivenStrikesAndSparesInGame(string gameBoard)
         {
             return _calculator.ScoreGame(gameBoard);

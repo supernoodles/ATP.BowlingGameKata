@@ -9,8 +9,9 @@
         {
             var playerThrowsForGame = Parse(gameBoard).ToList();
 
-            return Enumerable.Range(1, 10).Sum(frameNumberToScore => 
-                ScoreFrame(playerThrowsForGame.PlayerThrowsForFrame(frameNumberToScore), 
+            return Enumerable.Range(1, 10)
+                .Sum(frameNumberToScore => 
+                        ScoreFrame(playerThrowsForGame.PlayerThrowsForFrame(frameNumberToScore), 
                     playerThrowsForGame.NextTwoPlayerThrowsAfterFrame(frameNumberToScore)));
         }
 
